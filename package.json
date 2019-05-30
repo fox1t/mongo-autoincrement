@@ -1,6 +1,6 @@
 {
   "name": "mongo-autoincrement",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Autoincrement functionality for MongoDb.",
   "main": "./lib",
   "types": "./lib",
