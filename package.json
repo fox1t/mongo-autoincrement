@@ -1,0 +1,74 @@
+{
+  "name": "mongo-autoincrement",
+  "version": "0.1.0",
+  "description": "Autoincrement functionality for MongoDb.",
+  "main": "./lib",
+  "types": "./lib",
+  "author": "Maksim Sinik <maksim@sinik.it>",
+  "license": "MIT",
+  "scripts": {
+    "prebuild": "npm run lint && npm run clean-build",
+    "build": "tsc",
+    "clean-build": "rimraf ./lib && mkdir lib",
+    "update": "npx npm-check -u",
+    "prettier": "prettier --loglevel warn --write \"src/**/*.{ts,tsx}\"",
+    "prelint": "npm run prettier",
+    "lint": "tslint --fix -c tslint.json -t stylish -p ./tsconfig.json",
+    "prepublishOnly": "npm run build",
+    "test": "tap test/**/*.ts",
+    "test:watch": "chokidar \"src/**/*.ts\" \"test/**/*.ts\" -c \"npm run test\" --initial",
+    "test:report": "npm run test | tee out.tap",
+    "test:reporter": "tap-mocha-reporter xunit < out.tap > junit-testresults.xml"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fox1t/mongo-autoincrement.git"
+  },
+  "keywords": [
+    "mongodb",
+    "mongo",
+    "plugin",
+    "auto-increment",
+    "auto",
+    "increment",
+    "automatic",
+    "autoincrement",
+    "auto_increment",
+    "autoinc",
+    "auto-inc",
+    "auto_inc",
+    "pureautoinc"
+  ],
+  "bugs": {
+    "url": "https://github.com/fox1t/mongo-autoincrement/issues"
+  },
+  "homepage": "https://github.com/fox1t/mongo-autoincrement#readme",
+  "devDependencies": {
+    "@types/mongodb": "~3.1.27",
+    "@types/node": "~12.0.3",
+    "chokidar-cli": "~1.2.2",
+    "husky": "~2.3.0",
+    "mongodb": "~3.2.6",
+    "mongodb-memory-server": "~5.1.2",
+    "prettier": "~1.17.1",
+    "rimraf": "~2.6.3",
+    "tap": "~14.2.0",
+    "tap-mocha-reporter": "~4.0.1",
+    "ts-node": "~8.2.0",
+    "tslint": "~5.16.0",
+    "tslint-config-prettier": "~1.18.0",
+    "typescript": "~3.5.1"
+  },
+  "files": [
+    "/lib",
+    "/typings"
+  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run test && npm run build"
+    }
+  },
+  "directories": {
+    "test": "test"
+  }
+}
