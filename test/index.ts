@@ -57,5 +57,13 @@ test(`mongo-autoincrement`, async t => {
 
     t2.equal(three, 3)
   })
+
+  t.test('should use mongo session', async t2 => {
+    t2.plan(1)
+    await client.withSession(async session => {
+      const one = await autoIncrement(db, 'test5', 'id', { session })
+      t2.equal(one, 1)
+    })
+  })
   t.end()
 })
